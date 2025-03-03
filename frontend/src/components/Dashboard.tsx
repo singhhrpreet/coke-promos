@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Card, Row, Col, Form, Button, Table } from 'react-bootstrap';
+import { Card, Row, Col, Form, Table } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
-import { BarChart, LineChart, Activity, DollarSign, Pencil, Trash2 } from 'lucide-react';
+import { BarChart, Activity, DollarSign } from 'lucide-react';
 import { Promotion } from '../store/promotionsSlice';
-import { useReactTable, getCoreRowModel, getSortedRowModel, flexRender, ColumnDef, SortingState, FilterFn } from '@tanstack/react-table';
+import { useReactTable, getCoreRowModel, getSortedRowModel, flexRender, ColumnDef, SortingState} from '@tanstack/react-table';
 
 interface DashboardProps {
   promotions: Promotion[];
