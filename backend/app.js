@@ -25,7 +25,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.get("/", (req, res) => {
+  res.sendFile(join(__dirname, "public/dist/index.html"));
+});
+
+app.use('/api', indexRouter);
 app.use('/api/promotions', promotionsRouter);
 
 // catch 404 and forward to error handler
