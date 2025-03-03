@@ -149,9 +149,14 @@ const Dashboard: React.FC<DashboardProps> = ({
               </Form.Group>
             </Col>
             
-            <Col md={3}>
+            <Col md={2}>
               <Form.Group className="mb-3 mb-md-0">
-                <Button>Filter</Button>
+                <Button variant="primary" onClick={handleApplyFilter}>Filter</Button>
+              </Form.Group>
+            </Col>
+            <Col md={2}>
+              <Form.Group className="mb-3 mb-md-0">
+                <Button variant="secondary" onClick={handleClearFilter}>Clear</Button>
               </Form.Group>
             </Col>
           </Row>
