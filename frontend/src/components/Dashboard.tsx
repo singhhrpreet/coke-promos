@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Row, Col, Form, Table } from 'react-bootstrap';
+import { Card, Row, Col, Form, Table, Button } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import { BarChart, Activity, DollarSign } from 'lucide-react';
 import { Promotion } from '../store/promotionsSlice';
@@ -112,6 +112,52 @@ const Dashboard: React.FC<DashboardProps> = ({
     <div>
       <h2 className="mb-4">Promotions Dashboard</h2>
 
+      <Card className="mb-4">
+        <Card.Header>
+          <h5 className="mb-0">Filter Promotions</h5>
+        </Card.Header>
+        <Card.Body>
+          <Row className="align-items-end">
+            <Col md={3}>
+              <Form.Group className="mb-3 mb-md-0">
+                <Form.Label>Start Date</Form.Label>
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  selectsStart
+                  startDate={startDate}
+                  endDate={endDate}
+                  className="form-control"
+                  dateFormat="yyyy-MM-dd"
+                />
+              </Form.Group>
+            </Col>
+
+            <Col md={3}>
+              <Form.Group className="mb-3 mb-md-0">
+                <Form.Label>End Date</Form.Label>
+                <DatePicker
+                  selected={endDate}
+                  onChange={(date) => setEndDate(date)}
+                  selectsEnd
+                  startDate={startDate}
+                  endDate={endDate}
+                  minDate={startDate}
+                  className="form-control"
+                  dateFormat="yyyy-MM-dd"
+                />
+              </Form.Group>
+            </Col>
+            
+            <Col md={3}>
+              <Form.Group className="mb-3 mb-md-0">
+                <Button>Filter</Button>
+              </Form.Group>
+            </Col>
+          </Row>
+        </Card.Body>
+      </Card>
+
       <Row className="mb-4">
         <Col md={3}>
           <Card className="dashboard-card bg-primary text-white">
@@ -158,56 +204,6 @@ const Dashboard: React.FC<DashboardProps> = ({
         </Col>
       </Row>
 
-      <Card className="mb-4">
-        <Card.Header>
-          <h5 className="mb-0">Filter Promotions</h5>
-        </Card.Header>
-        <Card.Body>
-          <Row className="align-items-end">
-            <Col md={3}>
-              <Form.Group className="mb-3 mb-md-0">
-                <Form.Label>Search</Form.Label>
-                <Form.Control type="text" value={globalFilter}
-                  onChange={e => {
-                    setGlobalFilter(e.target.value)
-                    table.setGlobalFilter(e.target.value)
-                  }} />
-              </Form.Group>
-            </Col>
-
-            <Col md={3}>
-              <Form.Group className="mb-3 mb-md-0">
-                <Form.Label>Start Date</Form.Label>
-                <DatePicker
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  selectsStart
-                  startDate={startDate}
-                  endDate={endDate}
-                  className="form-control"
-                  dateFormat="yyyy-MM-dd"
-                />
-              </Form.Group>
-            </Col>
-
-            <Col md={3}>
-              <Form.Group className="mb-3 mb-md-0">
-                <Form.Label>End Date</Form.Label>
-                <DatePicker
-                  selected={endDate}
-                  onChange={(date) => setEndDate(date)}
-                  selectsEnd
-                  startDate={startDate}
-                  endDate={endDate}
-                  minDate={startDate}
-                  className="form-control"
-                  dateFormat="yyyy-MM-dd"
-                />
-              </Form.Group>
-            </Col>
-          </Row>
-        </Card.Body>
-      </Card>
       <div className="table-responsive">
         <Table striped bordered hover>
           <thead>
