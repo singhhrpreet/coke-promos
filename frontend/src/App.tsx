@@ -116,7 +116,7 @@ function App() {
                   </Card.Header>
                   <Card.Body>
                     <PromotionList 
-                      promotions={filteredPromotions} 
+                      promotions={items} 
                       onUpdate={handleUpdatePromotion} 
                       onDelete={handleDeletePromotion}
                       loading={status === 'loading'}

@@ -112,57 +112,45 @@ const Dashboard: React.FC<DashboardProps> = ({
     <div>
       <h2 className="mb-4">Promotions Dashboard</h2>
 
-      <Card className="mb-4">
-        <Card.Header>
-          <h5 className="mb-0">Filter Promotions</h5>
-        </Card.Header>
-        <Card.Body>
-          <Row className="align-items-end">
-            <Col md={3}>
-              <Form.Group className="mb-3 mb-md-0">
-                <Form.Label>Start Date</Form.Label>
-                <DatePicker
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  selectsStart
-                  startDate={startDate}
-                  endDate={endDate}
-                  className="form-control"
-                  dateFormat="yyyy-MM-dd"
-                />
-              </Form.Group>
-            </Col>
+      <Row className="mb-4 justify-content-end">
+        <Col md={2} sm={3} xs={4}>
+          <DatePicker
+            showIcon
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            selectsStart
+            startDate={startDate}
+            endDate={endDate}
+            className="form-control"
+            dateFormat="yyyy-MM-dd"
+            placeholder="Start Date"
+          />
+        </Col>
 
-            <Col md={3}>
-              <Form.Group className="mb-3 mb-md-0">
-                <Form.Label>End Date</Form.Label>
-                <DatePicker
-                  selected={endDate}
-                  onChange={(date) => setEndDate(date)}
-                  selectsEnd
-                  startDate={startDate}
-                  endDate={endDate}
-                  minDate={startDate}
-                  className="form-control"
-                  dateFormat="yyyy-MM-dd"
-                />
-              </Form.Group>
-            </Col>
-            
-            <Col md={2}>
-              <Form.Group className="mb-3 mb-md-0">
-                <Button variant="primary" onClick={handleApplyFilter}>Filter</Button>
-              </Form.Group>
-            </Col>
-            <Col md={2}>
-              <Form.Group className="mb-3 mb-md-0">
-                <Button variant="secondary" onClick={handleClearFilter}>Clear</Button>
-              </Form.Group>
-            </Col>
-          </Row>
-        </Card.Body>
-      </Card>
+        <Col md={2} sm={3} xs={4}>
+          <DatePicker
+            showIcon
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
+            selectsEnd
+            startDate={startDate}
+            endDate={endDate}
+            minDate={startDate}
+            className="form-control"
+            dateFormat="yyyy-MM-dd"
+          />
+        </Col>
+        
+        <Col md={1} sm={2} xs={2}>
+          <Button variant="primary" onClick={handleApplyFilter}>Filter</Button>
+        </Col>
+        <Col md={1} sm={2} xs={2}>
+          <Button variant="secondary" onClick={handleClearFilter}>Clear</Button>
+        </Col>
+      </Row>
 
+      <hr />
+      
       <Row className="mb-4">
         <Col md={3}>
           <Card className="dashboard-card bg-primary text-white">
